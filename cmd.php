@@ -31,35 +31,35 @@ class CMD
   //   [1]=>
   //   string(6) "param2"
   // }
-  public static function parseArgs($argv=null){
+  public static function parseArgs($argv = null) {
     if ($argv == null) {
       $argv = $GLOBALS['argv'];
     }
     array_shift($argv); // remove script name from front
     $out = array();
-    foreach ($argv as $arg){
+    foreach ($argv as $arg) {
       // handle options with double hypen followed by multiple characters
-      if (substr($arg,0,2) == '--') {
-        $eqPos = strpos($arg,'=');
+      if (substr($arg, 0, 2) == '--') {
+        $eqPos = strpos($arg, '=');
         if ($eqPos === false) {
           // handle --key
-          $key = substr($arg,2);
+          $key = substr($arg, 2);
           $out[$key] = isset($out[$key]) ? $out[$key] : true;
         } else {
           // handle --key=value
-          $key = substr($arg,2,$eqPos-2);
-          $out[$key] = substr($arg,$eqPos+1);
+          $key = substr($arg, 2, $eqPos-2);
+          $out[$key] = substr($arg, $eqPos+1);
         }
-      } else if (substr($arg,0,1) == '-'){
+      } else if (substr($arg, 0, 1) == '-') {
         // handle options with single hyphen followed by one or more characters, each a single option
-        if (substr($arg,2,1) == '=') {
+        if (substr($arg, 2, 1) == '=') {
           // handle -k=value
-          $key = substr($arg,1,1);
-          $out[$key] = substr($arg,3);
+          $key = substr($arg, 1, 1);
+          $out[$key] = substr($arg, 3);
         } else {
           // handle singfle letter switches -k
           // -kvm is the same as -k -v -m
-          $chars = str_split(substr($arg,1));
+          $chars = str_split(substr($arg, 1));
           foreach ($chars as $char) {
             $key = $char;
             $out[$key] = isset($out[$key]) ? $out[$key] : true;
