@@ -6,7 +6,7 @@
 class CMD
 {
   
-  function __construct() {
+  private function __construct() {
     # code...
   }
   
