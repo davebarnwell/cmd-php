@@ -1,4 +1,4 @@
-# Parsing cmd line options fro PHP
+# Parsing cmd line options from PHP
 
     php somescript.php --option=option1 --t=options2 -ds param1 param2
     
