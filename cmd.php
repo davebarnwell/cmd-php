@@ -10,29 +10,14 @@ class CMD
     # code...
   }
   
-  // parse command line args if nothing is passed in use global $argv
-  // a command line of param1 --word=value -k=value -t -mno param2
-  // parses as
-  // array(8) {
-  //   [0]=>
-  //   string(6) "param1"
-  //   ["word"]=>
-  //   string(5) "value"
-  //   ["k"]=>
-  //   string(5) "value"
-  //   ["t"]=>
-  //   bool(true)
-  //   ["m"]=>
-  //   bool(true)
-  //   ["n"]=>
-  //   bool(true)
-  //   ["o"]=>
-  //   bool(true)
-  //   [1]=>
-  //   string(6) "param2"
-  // }
+  /**
+   * parse command line args if nothing is passed in use global $argv
+   *
+   * @param array $argv 
+   * @return array
+   */
   public static function parseArgs($argv = null) {
-    if ($argv == null) {
+    if ($argv === null) {
       $argv = $GLOBALS['argv'];
     }
     array_shift($argv); // remove script name from front
